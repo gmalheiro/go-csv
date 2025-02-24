@@ -5,10 +5,10 @@ import (
 	"os"
 	"strconv"
 
-	"gmalheiro.com/goCSV/model"
+	"gmalheiro.com/goCSV/entity"
 )
 
-func ReadCSV() *[]model.Person {
+func ReadCSV() *[]entity.Person {
 	file, err := os.Open("./data/hr.csv")
 
 	if err != nil {
@@ -23,11 +23,11 @@ func ReadCSV() *[]model.Person {
 		panic(err)
 	}
 
-	people := make([]model.Person, len(records))
+	people := make([]entity.Person, len(records))
 
 	for i, record := range records {
 		age, _ := strconv.Atoi(record[2])
-		person := model.Person{
+		person := entity.Person{
 			Name: record[0],
 			CPF:  record[1],
 			Age:  age,
